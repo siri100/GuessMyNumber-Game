@@ -11,6 +11,9 @@ const displayMessage = function(message){
 const setScoreText = function(text){
     document.querySelector('.score').textContent = text;
 }
+const setBackgroundColor = function(color){
+    document.querySelector('body').style.backgroundColor = color;
+}
 document.querySelector('.check').addEventListener
 ('click' 
  , function() {
@@ -20,12 +23,13 @@ document.querySelector('.check').addEventListener
      //When there is no input
      if(!guess){
         displayMessage('⛔ No Number!');
+        setBackgroundColor('rgb(236, 5, 5)');
 
         //When player wins
      }else if(guess === secretNumber){
         displayMessage('🎉 Correct Number!');
         document.querySelector('.number').textContent = secretNumber;
-        document.querySelector('body').style.backgroundColor = '#60b347';
+        setBackgroundColor('#60b347');
         document.querySelector('.number').style.width = '30rem';
 
         if(score > highScore){
@@ -50,7 +54,7 @@ document.querySelector('.check').addEventListener
 document.querySelector('.again').addEventListener('click' , function(){
     secretNumber = Math.trunc(Math.random() *20) + 1;
     score = 20;
-   document.querySelector('body').style.backgroundColor = '#222';
+   setBackgroundColor('#222');
    document.querySelector('.number').style.width = '15rem';
    document.querySelector('.number').textContent = '?';
    setScoreText(20);
